@@ -1,14 +1,8 @@
 "use client"
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import { useState } from "react";
 import { useClickSound } from "@/hooks/use-click-sound"
+import { ChevronRight, ChevronDown, Rocket, Eye, Wifi, Shield, Zap, Cpu, Camera, Lock } from "lucide-react";
 
 interface TimelineCardProps {
   milestone: {
@@ -18,97 +12,105 @@ interface TimelineCardProps {
     description: string
     color: string
     icon: string
+    date?: string
+    type?: "feature" | "bug" | "improvement"
   }
-  isLeft: boolean
-  index: number
-  activeMilestoneIndex: number | null
-  setActiveMilestoneIndex: (index: number | null) => void
-  totalMilestones: number
+  isLast: boolean
 }
 
 export function TimelineCard({
   milestone,
-  index,
-  activeMilestoneIndex,
-  setActiveMilestoneIndex,
-  totalMilestones,
+  isLast,
 }: TimelineCardProps) {
-  const isDialogOpen = activeMilestoneIndex === index
-  const { playClickSound } = useClickSound()
+  const [isExpanded, setIsExpanded] = useState(false);
+  const playClickSound = useClickSound()
 
-  const handleOpenChange = (open: boolean) => {
-    if (open) {
-      setActiveMilestoneIndex(index)
-    } else {
-      setActiveMilestoneIndex(null)
+  const getIconComponent = (iconName: string) => {
+    switch (iconName) {
+      case "rocket": return <Rocket className="text-white" size={20} />;
+      case "eye": return <Eye className="text-white" size={20} />;
+      case "wifi": return <Wifi className="text-white" size={20} />;
+      case "shield": return <Shield className="text-white" size={20} />;
+      case "zap": return <Zap className="text-white" size={20} />;
+      case "cpu": return <Cpu className="text-white" size={20} />;
+      case "camera": return <Camera className="text-white" size={20} />;
+      case "lock": return <Lock className="text-white" size={20} />;
+      default: return <Rocket className="text-white" size={20} />;
     }
-  }
+  };
 
-  const handlePrevious = () => {
-    if (activeMilestoneIndex !== null && activeMilestoneIndex > 0) {
-      setActiveMilestoneIndex(activeMilestoneIndex - 1)
-    }
-  }
-
-  const handleNext = () => {
-    if (activeMilestoneIndex !== null && activeMilestoneIndex < totalMilestones - 1) {
-      setActiveMilestoneIndex(activeMilestoneIndex + 1)
-    }
-  }
+  const handleToggle = () => {
+    playClickSound();
+    setIsExpanded(!isExpanded);
+  };
 
   return (
-    <div className="relative w-full md:w-[45%]">
-      <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
-        <DialogTrigger asChild>
-          <div
-            className="group relative overflow-hidden rounded-lg p-6 transition-all duration-300 transform hover:scale-105 focus:outline-none"
-            onClick={playClickSound}
+    <li key={milestone.id} className={`relative ${!isLast ? 'pb-8' : ''}`}>
+      {/* Vertical line with cyberpunk glow */}
+      {!isLast && (
+        <span 
+          className="absolute top-5 left-5 -ml-px h-full w-0.5 bg-cyan-500/30 shadow-[0_0_2px_#00ffff,inset_0_0_2px_#00ffff]" 
+          aria-hidden="true"
+        ></span>
+      )}
+      
+      <div className="relative flex items-start space-x-3">
+        {/* Icon circle with terminal glow */}
+        <div className="relative px-1">
+          <div 
+            className="h-10 w-10 rounded-full flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity shadow-[0_0_8px_var(--glow-color)]"
+            style={{ 
+              backgroundColor: milestone.color,
+              '--glow-color': milestone.color
+            } as React.CSSProperties}
+            onClick={handleToggle}
           >
-            <div className="mb-3 inline-block">
-              <span
-                className="rounded border px-3 py-1 font-mono text-xs font-bold"
-                style={{
-                  borderColor: milestone.color,
-                  color: milestone.color,
-                  backgroundColor: `${milestone.color}15`,
-                }}
+            {getIconComponent(milestone.icon)}
+          </div>
+        </div>
+        
+        {/* Content with terminal styling */}
+        <div className="min-w-0 flex-1 py-0.5">
+          <div className="text-md font-mono">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span 
+                className="font-bold text-foreground cursor-pointer hover:text-cyan-400 transition-colors terminal-text"
+                onClick={handleToggle}
               >
+                {milestone.title}
+              </span>
+              
+              <span
+                className="inline-flex items-center rounded-sm border px-3 py-0.5 text-xs font-mono font-bold border-cyan-500/50 bg-cyan-900/20 text-cyan-400"
+              >
+                <span className="mr-1.5 h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                 {milestone.phase}
               </span>
+              
+              <button 
+                onClick={handleToggle}
+                className="ml-auto text-cyan-500 hover:text-cyan-300 transition-colors terminal-text"
+                aria-label={isExpanded ? "Collapse description" : "Expand description"}
+              >
+                {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+              </button>
             </div>
-
-            <h3 className="text-primary cursor-pointer text-lg font-bold select-none">{milestone.title}</h3>
+            
+            {milestone.date && (
+              <span className="whitespace-nowrap text-sm mt-1 block text-cyan-500/70 font-mono">
+                {milestone.date}
+              </span>
+            )}
           </div>
-        </DialogTrigger>
-        <DialogContent className="w-11/12 max-w-md md:max-w-lg">
-          <DialogHeader>
-            <DialogTitle>{milestone.title}</DialogTitle>
-            <DialogDescription>{milestone.description}</DialogDescription>
-          </DialogHeader>
-          <div className="mt-4 flex gap-2 justify-between">
-            <button
-              onClick={() => {
-                handlePrevious()
-                playClickSound()
-              }}
-              disabled={activeMilestoneIndex === 0}
-              className="flex-1 rounded-full bg-primary/80 hover:bg-primary p-2 text-primary-foreground disabled:opacity-50 transition-all text-xl"
-            >
-              ←
-            </button>
-            <button
-              onClick={() => {
-                handleNext()
-                playClickSound()
-              }}
-              disabled={activeMilestoneIndex === totalMilestones - 1}
-              className="flex-1 rounded-full bg-primary/80 hover:bg-primary p-2 text-primary-foreground disabled:opacity-50 transition-all text-xl"
-            >
-              →
-            </button>
+          
+          {/* Expandable description with terminal styling */}
+          <div className={`mt-2 transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <p className="text-sm text-foreground font-mono terminal-text">
+              {milestone.description}
+            </p>
           </div>
-        </DialogContent>
-      </Dialog>
-    </div>
+        </div>
+      </div>
+    </li>
   )
 }

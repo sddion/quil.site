@@ -2,24 +2,18 @@
 
 import { TerminalHeader } from "@/components/terminal-header"
 import { PageTransition } from "@/components/page-transition"
-import { ModalRoadmap } from "@/components/modal-roadmap"
-
-
-interface RoadmapItem {
-  id: string
-  phase: string
-  title: string
-  description: string
-}
+import { Roadmap } from "@/components/roadmap-3d"
 
 export default function FutureGoalsPage() {
-  const roadmapItems: RoadmapItem[] = [
+  const roadmapItems = [
     {
       id: "prototype",
       phase: "Phase 0",
       title: "Prototype — Current Development",
       description:
         "Active development and testing on ESP32 and ESP8266 microcontroller platforms. Building the foundation with voice recognition, gesture control, and display integration. Testing hardware architecture and firmware stack optimization.",
+      color: "rgb(0, 255, 255)",
+      icon: "cpu"
     },
     {
       id: "v2-camera",
@@ -27,6 +21,8 @@ export default function FutureGoalsPage() {
       title: "Vision AI — Real-Time Mood Detection",
       description:
         "Integrates real-time mood and emotion detection using on-device inference. Camera module enables advanced computer vision capabilities while maintaining privacy through local processing. No data leaves the device.",
+      color: "rgb(255, 0, 255)",
+      icon: "camera"
     },
     {
       id: "future-ota",
@@ -34,6 +30,8 @@ export default function FutureGoalsPage() {
       title: "OTA Updates & Cloud Learning",
       description:
         "Modular firmware upgrades deployed over-the-air without manual reflashing. Optional cloud-side learning improves model accuracy while users maintain control over data sharing preferences. Seamless update pipeline.",
+      color: "rgb(0, 255, 0)",
+      icon: "zap"
     },
     {
       id: "v3-pentesting",
@@ -41,14 +39,14 @@ export default function FutureGoalsPage() {
       title: "PenTesting Edition — Security Research",
       description:
         "Dedicated firmware with hardened Wi-Fi stack and on-device penetration testing toolkit. Designed for security researchers and ethical hackers to audit networks safely and responsibly. Red team ready.",
+      color: "rgb(255, 0, 0)",
+      icon: "lock"
     },
   ]
 
   return (
     <PageTransition>
       <div className="bg-background min-h-screen overflow-x-hidden relative">
-     
-
         <TerminalHeader />
 
         <section className="w-full px-4 py-8 md:py-12 lg:py-16" role="main">
@@ -63,8 +61,8 @@ export default function FutureGoalsPage() {
               </p>
             </div>
 
-            {/* Modal Roadmap */}
-            <ModalRoadmap items={roadmapItems} />
+            {/* Timeline Roadmap */}
+            <Roadmap milestones={roadmapItems} />
 
             {/* Info Section */}
             <div className="mt-16 md:mt-24 pt-8 md:pt-12 border-t border-border">
