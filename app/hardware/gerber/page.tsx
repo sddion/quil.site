@@ -17,7 +17,7 @@ export default function GerberPage() {
             Coming Soon
           </h1>
           <p className="text-muted-foreground text-lg max-w-md">
-            I&apos;m working hard to bring you this content. Please check back later!
+            I'm working hard to bring you this content. Please check back later!
           </p>
           <Link href="/" passHref>
             <Button className="terminal-text">Return to Homepage</Button>

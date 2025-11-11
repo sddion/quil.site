@@ -3,7 +3,7 @@
 import { TerminalHeader } from "@/components/terminal-header"
 import { PageTransition } from "@/components/page-transition"
 import { ModalRoadmap } from "@/components/modal-roadmap"
-import { FAQSchema } from "@/components/faq-schema"
+
 
 interface RoadmapItem {
   id: string
@@ -44,26 +44,6 @@ export default function FutureGoalsPage() {
     },
   ]
 
-  // FAQ data for GEO
-  const faqs = [
-    {
-      question: "What is Quil's development roadmap?",
-      answer: "Quil follows a phased development approach starting with prototype development on ESP32/ESP8266 platforms, followed by Vision AI integration, OTA updates, and a specialized PenTesting edition for security research."
-    },
-    {
-      question: "When will Quil be available for purchase?",
-      answer: "Quil is currently in the prototype development phase. The timeline for commercial availability depends on successful testing and community feedback. As an open-source project, DIY assembly will be possible once the prototype phase is complete."
-    },
-    {
-      question: "What are the privacy implications of Quil's future features?",
-      answer: "Privacy is a core principle of Quil's design. All processing happens on-device by default. Future cloud features will require explicit user consent, and users maintain complete control over data sharing preferences."
-    },
-    {
-      question: "Will Quil support other microcontroller platforms?",
-      answer: "While initially focused on ESP32/ESP8266, Quil's modular design allows for porting to other platforms. Community contributions for additional platform support are encouraged and welcomed."
-    }
-  ]
-
   return (
     <PageTransition>
       <div className="bg-background min-h-screen overflow-x-hidden relative">
@@ -96,13 +76,6 @@ export default function FutureGoalsPage() {
             </div>
           </div>
         </section>
-
-        {/* FAQ Schema for GEO */}
-        <FAQSchema 
-          faqs={faqs} 
-          pageTitle="Quil Development Roadmap" 
-          pageDescription="Explore Quil's development phases from prototype through advanced capabilities including Vision AI, OTA updates, and security research editions." 
-        />
 
         {/* CRT Scan Lines */}
         <div className="crt-scan pointer-events-none fixed inset-0" />

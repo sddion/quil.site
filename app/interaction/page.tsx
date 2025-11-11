@@ -3,8 +3,7 @@
 import { TerminalHeader } from "@/components/terminal-header"
 import { InteractionCarousel } from "@/components/interaction-carousel"
 import { FingerTapIcon, HandsExpandIcon, HandsPinchIcon, HandLeftIcon, PointUpIcon } from "@/components/icon-library"
-import { FAQSchema } from "@/components/faq-schema"
-import { HowToSchema } from "@/components/howto-schema"
+
 
 export default function InteractionPage() {
   const gestures = [
@@ -60,50 +59,6 @@ export default function InteractionPage() {
   ]
 
   const themePresets = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"]
-
-  // FAQ data for GEO
-  const faqs = [
-    {
-      question: "How do I interact with Quil?",
-      answer: "Quil supports both touch gestures and voice commands. Touch gestures include double tap, spread, pinch, swipes, and single tap for various functions. Voice commands allow natural conversation with the LLM-powered assistant."
-    },
-    {
-      question: "What voice commands does Quil understand?",
-      answer: "Quil understands natural language commands related to time, music playback, theme changes, and general conversation. The LLM integration allows for contextual understanding of a wide range of queries."
-    },
-    {
-      question: "How accurate is Quil's voice recognition?",
-      answer: "Quil uses OpenAI Whisper for cloud-based voice recognition, providing high accuracy even in noisy environments. Recognition accuracy depends on internet connectivity and audio quality."
-    },
-    {
-      question: "Can I customize Quil's gestures and commands?",
-      answer: "Yes, Quil's gesture recognition and voice commands are fully customizable through the configuration interface. Developers can modify existing gestures or add new ones through the open-source codebase."
-    }
-  ]
-
-  // HowTo steps for GEO
-  const interactionSteps = [
-    {
-      name: "Power On",
-      text: "Press the single tap gesture to wake the device from sleep mode. The display will show the current time and date in the default theme."
-    },
-    {
-      name: "Use Voice Commands",
-      text: "Speak naturally to the device. Try commands like 'What time is it?', 'Play music', or 'Change theme' to interact with different modes."
-    },
-    {
-      name: "Navigate with Gestures",
-      text: "Use touch gestures to navigate between modes. Spread to enter chat mode, pinch to exit, swipe left/right to change themes or songs, and double tap to toggle between modes."
-    },
-    {
-      name: "Enter Chat Mode",
-      text: "Use the spread gesture to enter chat mode for extended conversation with the LLM. Speak naturally and the device will provide contextual responses with emotional display feedback."
-    },
-    {
-      name: "Power Off",
-      text: "Press the single tap gesture again to put the device to sleep, preserving battery life while maintaining quick access to features."
-    }
-  ]
 
   return (
     <main className="bg-background min-h-screen overflow-x-hidden relative">
@@ -190,21 +145,6 @@ export default function InteractionPage() {
           </div>
         </div>
       </section>
-
-      {/* FAQ Schema for GEO */}
-      <FAQSchema 
-        faqs={faqs} 
-        pageTitle="Quil Interaction Guide" 
-        pageDescription="Learn how to interact with Quil using touch gestures and voice commands. Complete guide to all supported interactions." 
-      />
-
-      {/* HowTo Schema for GEO */}
-      <HowToSchema 
-        steps={interactionSteps}
-        title="How to Use Quil"
-        description="Complete guide to interacting with the Quil voice assistant device using gestures and voice commands"
-        timeRequired="PT10M"
-      />
 
       {/* Footer */}
       <footer className="border-border bg-background/50 crt-scan mt-12 border-t py-8 px-4">

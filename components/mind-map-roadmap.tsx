@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 
 interface RoadmapMilestone {
   id: string
@@ -20,10 +20,16 @@ interface MindMapRoadmapProps {
 export function MindMapRoadmap({ milestones, activeMilestoneIndex, setActiveMilestoneIndex }: MindMapRoadmapProps) {
   const svgRef = useRef<SVGSVGElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
     const updateDimensions = () => {
-      // Dimensions update logic removed since it wasn't being used
+      if (containerRef.current) {
+        setDimensions({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight,
+        })
+      }
     }
 
     updateDimensions()

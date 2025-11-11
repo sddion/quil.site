@@ -6,7 +6,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
 } from 'lucide-react'
-import { DayButton, DayPicker, getDefaultClassNames, CalendarDay } from 'react-day-picker'
+import { DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker'
 
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -125,7 +125,7 @@ function Calendar({
         ...classNames,
       }}
       components={{
-        Root: ({ className, rootRef, ...props }: { className?: string; rootRef?: React.Ref<HTMLDivElement> } & React.HTMLAttributes<HTMLDivElement>) => {
+        Root: ({ className, rootRef, ...props }) => {
           return (
             <div
               data-slot="calendar"
@@ -135,8 +135,7 @@ function Calendar({
             />
           )
         },
-        Chevron: ({ className, orientation, ...props }: { className?: string; size?: number; disabled?: boolean; orientation?: 'up' | 'down' | 'left' | 'right' | undefined }) => {
-          // Handle all possible orientations that react-day-picker might pass
+        Chevron: ({ className, orientation, ...props }) => {
           if (orientation === 'left') {
             return (
               <ChevronLeftIcon className={cn('size-4', className)} {...props} />
@@ -152,28 +151,20 @@ function Calendar({
             )
           }
 
-          if (orientation === 'up') {
-            return (
-              <ChevronDownIcon className={cn('size-4 rotate-180', className)} {...props} />
-            )
-          }
-
-          // Default to down (including for 'down' orientation)
           return (
             <ChevronDownIcon className={cn('size-4', className)} {...props} />
           )
         },
         DayButton: CalendarDayButton,
-        WeekNumber: ({ week, ...props }: { week: { weekNumber: number; days: CalendarDay[] } } & React.ThHTMLAttributes<HTMLTableCellElement>) => {
+        WeekNumber: ({ children, ...props }) => {
           return (
-            <th {...props}>
+            <td {...props}>
               <div className="flex size-(--cell-size) items-center justify-center text-center">
-                {week.weekNumber}
+                {children}
               </div>
-            </th>
+            </td>
           )
         },
-
         ...components,
       }}
       {...props}

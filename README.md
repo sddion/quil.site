@@ -4,18 +4,11 @@
 It combines real-time emotion, conversation, and system control through a seamless blend of **hardware, software, and AI**.
 
 ---
-
-## 🤖 Generative Engine Optimization (GEO)
-
-Quil implements **Generative Engine Optimization (GEO)** to improve visibility in AI-powered search engines like ChatGPT, Google Gemini, and Microsoft Copilot. Our structured content and schema markup help AI systems understand and cite Quil accurately.
-
-### Key GEO Features
-
-- **Structured Data Markup**: FAQPage, HowTo, Article, and Organization schemas
-- **AI-Friendly Content**: Clear question-answer formatting and step-by-step instructions
-- **Semantic HTML**: Proper heading hierarchy and descriptive markup
-- **Performance Optimized**: Mobile-first design with fast loading times
-
+<p align="center">
+  <video src="public/ezgif-8dc5c5e5fefa44c1.webm" width="600" autoplay loop muted playsinline>
+    Your browser does not support the video tag.
+  </video>
+</p>
 ## ⚙️ Core Features
 
 - 🎙️ **Voice Interaction** — Natural two-way voice communication via I2S mic and speaker.
@@ -25,7 +18,7 @@ Quil implements **Generative Engine Optimization (GEO)** to improve visibility i
   - `MUSIC` — controls playback  
   - `CHAT` — real-time voice + UI chat  
   - `THEME_PREVIEW` — dynamic color themes  
-- 🧠 **Adaptive Personality** — Quil's responses evolve with user context.
+- 🧠 **Adaptive Personality** — Quil’s responses evolve with user context.
 
 ---
 
@@ -44,7 +37,7 @@ Quil implements **Generative Engine Optimization (GEO)** to improve visibility i
 Built by [**sddion**](https://github.com/sddion)  
 🧩 Portfolio: [sddion.vercel.app](https://sddion.vercel.app)
 
-> _"Quil isn't just smart — it's emotionally aware."_
+> _“Quil isn’t just smart — it’s emotionally aware.”_
 
 ---
 

@@ -7,7 +7,7 @@ interface PageTransitionProps {
   delay?: number
 }
 
-export function PageTransition({ children }: PageTransitionProps) {
+export function PageTransition({ children, delay = 0 }: PageTransitionProps) {
   return (
     <div className="relative">
       {/* Folder open transition effect */}

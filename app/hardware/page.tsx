@@ -4,8 +4,6 @@ import { TerminalHeader } from "@/components/terminal-header"
 import { CardFile } from "@/components/card-file"
 import { PageTransition } from "@/components/page-transition"
 import { File } from "lucide-react"
-import { FAQSchema } from "@/components/faq-schema"
-import { HowToSchema } from "@/components/howto-schema"
 
 interface GerberFile {
   id: string
@@ -44,49 +42,6 @@ export default function HardwarePage() {
     },
   ]
 
-  // FAQ data for GEO
-  const faqs = [
-    {
-      question: "What hardware platforms does Quil support?",
-      answer: "Quil is primarily designed for ESP32 microcontroller platforms with active development and testing. The design is also adaptable to ESP8266 with some limitations."
-    },
-    {
-      question: "What are the hardware components included in Quil?",
-      answer: "Quil includes an ESP32 microcontroller, integrated microphone array, speaker driver circuit, OLED display, gesture sensors, and supporting power management components. All components are selected for open-source compatibility."
-    },
-    {
-      question: "Can I modify the hardware design?",
-      answer: "Yes, all hardware designs are released under the AGPL-3.0 license, making them fully open-source. You can modify, distribute, and use the designs for personal or commercial projects with proper attribution."
-    },
-    {
-      question: "What PCB manufacturers are compatible with Quil's Gerber files?",
-      answer: "Quil's Gerber files are compatible with standard PCB manufacturers including JLCPCB, PCBWay, Oshpark, and others. The design uses a 2-layer board optimized for low-cost production."
-    }
-  ]
-
-  // HowTo steps for GEO
-  const assemblySteps = [
-    {
-      name: "Gather Components",
-      text: "Collect all required components including ESP32 microcontroller, microphone array, speaker driver, OLED display, and supporting components as listed in the Bill of Materials."
-    },
-    {
-      name: "Prepare PCB",
-      text: "Inspect the PCB for any manufacturing defects. If using a PCB service, ensure the Gerber files have been correctly interpreted and manufactured to specifications."
-    },
-    {
-      name: "Solder Components",
-      text: "Follow the assembly guide to solder components to the PCB. Start with smaller components like resistors and capacitors, then move to larger components like the ESP32 module."
-    },
-    {
-      name: "Flash Firmware",
-      text: "Connect the assembled board to your computer and flash the Quil firmware using the provided flashing tools and instructions."
-    },
-    {
-      name: "Test Functionality",
-      text: "Power on the device and test all functions including voice recognition, gesture sensing, display output, and speaker functionality."
-    }
-  ]
 
   return (
     <PageTransition>
@@ -153,25 +108,6 @@ export default function HardwarePage() {
             </div>
           </div>
         </section>
-
-        {/* FAQ Schema for GEO */}
-        <FAQSchema 
-          faqs={faqs} 
-          pageTitle="Quil Hardware Documentation" 
-          pageDescription="KiCad schematic files, PCB layouts, and Gerber manufacturing files for Quil hardware. Open-source and ready for fabrication." 
-        />
-
-        {/* HowTo Schema for GEO */}
-        <HowToSchema 
-          steps={assemblySteps}
-          title="How to Assemble Quil Hardware"
-          description="Step-by-step guide to assembling the Quil voice assistant device from PCB to finished product"
-          timeRequired="PT120M"
-          estimatedCost={{
-            currency: "USD",
-            value: "50"
-          }}
-        />
 
         {/* CRT Scan Lines */}
         <div className="crt-scan pointer-events-none fixed inset-0" />
