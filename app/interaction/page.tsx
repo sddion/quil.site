@@ -62,7 +62,6 @@ export default function InteractionPage() {
 
   return (
     <main className="bg-background min-h-screen overflow-x-hidden relative">
-      <RoboticsBackground />
 
       <TerminalHeader />
 
