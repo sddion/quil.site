@@ -3,7 +3,7 @@
 import { TerminalHeader } from "@/components/terminal-header"
 import { InteractionCarousel } from "@/components/interaction-carousel"
 import { FingerTapIcon, HandsExpandIcon, HandsPinchIcon, HandLeftIcon, PointUpIcon } from "@/components/icon-library"
-import { RoboticsBackground } from "@/components/robotics-background"
+
 
 export default function InteractionPage() {
   const gestures = [

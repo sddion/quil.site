@@ -3,7 +3,7 @@
 import { TerminalHeader } from "@/components/terminal-header"
 import { PageTransition } from "@/components/page-transition"
 import { ModalRoadmap } from "@/components/modal-roadmap"
-import { RoboticsBackground } from "@/components/robotics-background"
+
 
 interface RoadmapItem {
   id: string
@@ -47,7 +47,7 @@ export default function FutureGoalsPage() {
   return (
     <PageTransition>
       <div className="bg-background min-h-screen overflow-x-hidden relative">
-        <RoboticsBackground />
+     
 
         <TerminalHeader />
 
