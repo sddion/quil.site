@@ -13,21 +13,15 @@ export const metadata: Metadata = {
   title: "Quil - Voice Assistant Device",
   description:
     "Quil: An AI-powered voice assistant with hardware integration. Open-source hardware and software for natural voice interaction.",
-  generator: "v0.app",
   keywords: "voice assistant, hardware, esp32, open-source, ai, quil",
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
+        url: "/favicon-32x32.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/favicon-32x32.png",
       },
     ],
     apple: "/apple-icon.png",
