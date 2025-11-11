@@ -75,7 +75,7 @@ export default function InteractionPage() {
       <section className="mx-auto max-w-7xl px-4 py-12">
         <div className="mb-8">
           <h1 className="terminal-text text-primary mb-2 text-3xl md:text-4xl">
-            $ cat ./interaction/guide.md
+            $ cat ./guide.md
           </h1>
           <p className="text-muted-foreground font-mono">
             Touch Gestures & Voice Commands
