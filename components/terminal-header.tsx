@@ -4,24 +4,24 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { useClickSound } from "@/hooks/use-click-sound"
+import { GitMerge, Home, Milestone, Settings } from "lucide-react";
 
-interface NavRoute {
-  href: string
-  label: string
-  icon: string
-}
 
 export function TerminalHeader() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
   const playClickSound = useClickSound()
 
-  const routes: NavRoute[] = [
-    { href: "/", label: "home", icon: "⌂" },
-    { href: "/hardware", label: "hardware", icon: "⚙" },
-    { href: "/future-goals", label: "roadmap", icon: "◊" },
-    { href: "/interaction", label: "interaction", icon: "⎚" },
-  ]
+  const routes = [
+    { href: "/", label: "home", icon: <Home size="1em" /> },
+    { href: "/hardware", label: "hardware", icon: <Settings size="1em" /> },
+    { href: "/future-goals", label: "roadmap", icon: <Milestone size="1em" /> },
+    {
+      href: "/interaction",
+      label: "interaction",
+      icon: <GitMerge size="1em" />,
+    },
+  ];
 
   const handleNavClick = () => {
     playClickSound()
