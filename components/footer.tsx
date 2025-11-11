@@ -1,5 +1,7 @@
+"use client"
 
 import Link from "next/link"
+import { useClickSound } from "@/hooks/use-click-sound"
 
 interface FooterLink {
   href: string
@@ -20,8 +22,14 @@ export function Footer({
     { href: "https://x.com/sddion_", text: "X (Twitter)" },
   ],
   infoText = `© ${new Date().getFullYear()} Quil Project · Open source · Built with care`,
-  defaultCommand = "", 
+  defaultCommand = "",
 }: FooterProps) {
+  const playClickSound = useClickSound()
+
+  const handleLinkClick = () => {
+    playClickSound()
+  }
+
   return (
     <footer className="border-t border-border bg-background/50 mt-12 py-8 crt-scan" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4">
@@ -37,6 +45,7 @@ export function Footer({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                      onClick={handleLinkClick}
                     >
                       → {link.text}
                     </Link>
@@ -60,6 +69,7 @@ export function Footer({
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                      onClick={handleLinkClick}
                     >
                       → {link.text}
                     </Link>

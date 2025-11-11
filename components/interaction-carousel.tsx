@@ -1,11 +1,13 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 
 interface CarouselProps {
   items: {
     label: string
-    content: React.ReactNode 
+    content: React.ReactNode
   }[]
   autoplay?: boolean
 }
@@ -24,22 +26,21 @@ export function InteractionCarousel({ items, autoplay = true }: CarouselProps) {
   }, [items.length, autoplay])
 
   return (
-    <div className="p-4"> {}
-      <div
-        className="text-sm text-muted-foreground min-h-[400px] flex items-center justify-center transition-all duration-500 ease-in-out" // Added transition
-      >
+    <div className="p-4 md:p-6 w-full">
+      <div className="text-sm text-muted-foreground min-h-[300px] md:min-h-[400px] flex items-center justify-center transition-all duration-500 ease-in-out animate-in fade-in">
         {items[current].content}
       </div>
 
       {/* Navigation Dots */}
-      <div className="flex gap-2 mt-4 justify-center">
+      <div className="flex gap-2 mt-6 justify-center flex-wrap">
         {items.map((_, idx) => (
           <button
             key={idx}
             onClick={() => setCurrent(idx)}
-            className="w-2 h-2 rounded-full transition-colors"
+            className="w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 hover:scale-125"
             style={{
-              backgroundColor: idx === current ? "rgb(112, 200, 180)" : "rgb(60, 60, 70)",
+              backgroundColor: idx === current ? "rgb(217, 187, 0)" : "rgb(60, 60, 70)",
+              boxShadow: idx === current ? "0 0 8px rgba(217, 187, 0, 0.5)" : "none",
             }}
             aria-label={`Go to slide ${idx + 1}`}
           />

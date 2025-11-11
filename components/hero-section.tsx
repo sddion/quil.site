@@ -11,7 +11,7 @@ export function HeroSection() {
         className="absolute inset-0 h-full w-full object-cover opacity-40"
         aria-label="Hero animation background"
       >
-        <source src="./ezgif-8dc5c5e5fefa44c1.webm" type="video/webm" />
+        <source src=".https://hebbkx1anhila5yf.public.blob.vercel-storage.com/files-blob/quil.site/public/ezgif-8dc5c5e5fefa44c1-MRlzE6o2rDILa5qP3w8jZ60YUzsGc0.webm" type="video/webm" />
       </video>
 
       {/* Gradient overlay for readability */}

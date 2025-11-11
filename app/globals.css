@@ -40,40 +40,42 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Dark theme for Quil - deep black background with neon green/cyan accents */
+/* Updated dark theme with green as secondary and maintained hacker aesthetic */
 .dark {
-  --background: oklch(0.08 0 0);
+  --background: oklch(0.07 0 0);
   --foreground: oklch(0.95 0.02 142.5);
-  --card: oklch(0.12 0 0);
+  --card: oklch(0.11 0.01 240);
   --card-foreground: oklch(0.95 0.02 142.5);
-  --popover: oklch(0.12 0 0);
+  --popover: oklch(0.11 0.01 240);
   --popover-foreground: oklch(0.95 0.02 142.5);
-  --primary: oklch(0.7 0.21 142.5);
-  --primary-foreground: oklch(0.08 0 0);
-  --secondary: oklch(0.6 0.18 262.5);
-  --secondary-foreground: oklch(0.95 0.02 142.5);
+  /* Changed primary to green hacker color */
+  --primary: oklch(0.5 0.25 145);
+  --primary-foreground: oklch(0.07 0 0);
+  /* Green as secondary accent for buttons and highlights */
+  --secondary: oklch(0.6 0.2 145);
+  --secondary-foreground: oklch(0.07 0 0);
   --muted: oklch(0.25 0 0);
   --muted-foreground: oklch(0.55 0 0);
-  --accent: oklch(0.7 0.21 142.5);
-  --accent-foreground: oklch(0.08 0 0);
+  --accent: oklch(0.6 0.2 145);
+  --accent-foreground: oklch(0.07 0 0);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.95 0.02 142.5);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.7 0.21 142.5);
-  --chart-1: oklch(0.7 0.21 142.5);
+  --border: oklch(0.18 0.01 240);
+  --input: oklch(0.14 0 0);
+  --ring: oklch(0.6 0.2 145);
+  --chart-1: oklch(0.6 0.2 145);
   --chart-2: oklch(0.6 0.18 262.5);
   --chart-3: oklch(0.65 0.15 50);
   --chart-4: oklch(0.55 0.2 25);
   --chart-5: oklch(0.7 0.19 302.5);
-  --sidebar: oklch(0.1 0 0);
+  --sidebar: oklch(0.09 0 0);
   --sidebar-foreground: oklch(0.95 0.02 142.5);
-  --sidebar-primary: oklch(0.7 0.21 142.5);
-  --sidebar-primary-foreground: oklch(0.08 0 0);
-  --sidebar-accent: oklch(0.6 0.18 262.5);
-  --sidebar-accent-foreground: oklch(0.08 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.7 0.21 142.5);
+  --sidebar-primary: oklch(0.6 0.2 145);
+  --sidebar-primary-foreground: oklch(0.07 0 0);
+  --sidebar-accent: oklch(0.6 0.2 145);
+  --sidebar-accent-foreground: oklch(0.07 0 0);
+  --sidebar-border: oklch(0.18 0.01 240);
+  --sidebar-ring: oklch(0.6 0.2 145);
 }
 
 @theme inline {
@@ -138,7 +140,7 @@
 
 .card-file:hover {
   @apply shadow-lg border-primary;
-  box-shadow: 0 0 20px rgba(112, 200, 180, 0.3);
+  box-shadow: 0 0 20px rgba(217, 187, 0, 0.3);
 }
 
 .crt-scan {
@@ -170,6 +172,36 @@
   }
   100% {
     transform: translateY(10px);
+  }
+}
+
+/* Enhanced animations for neon effect and smooth transitions */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(217, 187, 0, 0.5), 0 0 20px rgba(217, 187, 0, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(217, 187, 0, 0.8), 0 0 30px rgba(217, 187, 0, 0.4);
+  }
+}
+
+@keyframes node-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes line-draw {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -206,4 +238,54 @@
 }
 .horizontal-timeline > * {
   scroll-snap-align: center;
+}
+
+/* Add slide-in and fade-in animations for accordion content */
+@keyframes slide-in-from-top {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: fade-in 0.2s ease-out forwards;
+  }
+
+  .slide-in-from-top-2 {
+    animation: slide-in-from-top 0.2s ease-out;
+  }
+}
+
+/* Added filter styling for Firefox icon fix */
+img[alt*="Tap"],
+img[alt*="Spread"],
+img[alt*="Pinch"],
+img[alt*="Swipe"],
+img[alt*="Single"] {
+  filter: brightness(1) invert(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  img[alt*="Tap"],
+  img[alt*="Spread"],
+  img[alt*="Pinch"],
+  img[alt*="Swipe"],
+  img[alt*="Single"] {
+    filter: brightness(1) invert(0) drop-shadow(0 0 2px rgba(0, 255, 0, 0.5));
+  }
 }

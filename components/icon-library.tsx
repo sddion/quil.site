@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image" 
+import Image from "next/image"
 
 export function MicrophoneIcon() {
   return (
@@ -39,21 +39,55 @@ export function SmileIcon() {
 }
 
 export function FingerTapIcon() {
-  return <Image src="/double-tap.png" alt="Double Tap" width={24} height={24} />
+  return (
+    <Image src="/double-tap.png" alt="Double Tap" width={24} height={24} className="brightness-0 dark:brightness-100" />
+  )
 }
 
 export function HandsExpandIcon() {
-  return <Image src="/spread.png" alt="Spread (Expand)" width={24} height={24} />
+  return (
+    <Image
+      src="/spread.png"
+      alt="Spread (Expand)"
+      width={24}
+      height={24}
+      className="brightness-0 dark:brightness-100"
+    />
+  )
 }
 
 export function HandsPinchIcon() {
-  return <Image src="/pinch.png" alt="Pinch (Collapse)" width={24} height={24} />
+  return (
+    <Image
+      src="/pinch.png"
+      alt="Pinch (Collapse)"
+      width={24}
+      height={24}
+      className="brightness-0 dark:brightness-100"
+    />
+  )
 }
 
 export function HandLeftIcon() {
-  return <Image src="/swipe.png" alt="Left/Right Swipe" width={24} height={24} />
+  return (
+    <Image
+      src="/swipe.png"
+      alt="Left/Right Swipe"
+      width={24}
+      height={24}
+      className="brightness-0 dark:brightness-100"
+    />
+  )
 }
 
 export function PointUpIcon() {
-  return <Image src="/hand.png" alt="Single Tap / Point Up" width={24} height={24} />
+  return (
+    <Image
+      src="/hand.png"
+      alt="Single Tap / Point Up"
+      width={24}
+      height={24}
+      className="brightness-0 dark:brightness-100"
+    />
+  )
 }

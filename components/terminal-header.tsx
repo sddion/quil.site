@@ -1,23 +1,31 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { GitMerge, Home, Milestone, Settings } from "lucide-react";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useState } from "react"
+import { useClickSound } from "@/hooks/use-click-sound"
+
+interface NavRoute {
+  href: string
+  label: string
+  icon: string
+}
+
 export function TerminalHeader() {
-  const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const playClickSound = useClickSound()
 
-  const routes = [
-    { href: "/", label: "home", icon: <Home size="1em" /> },
-    { href: "/hardware", label: "hardware", icon: <Settings size="1em" /> },
-    { href: "/future-goals", label: "roadmap", icon: <Milestone size="1em" /> },
-    {
-      href: "/interaction",
-      label: "interaction",
-      icon: <GitMerge size="1em" />,
-    },
-  ];
+  const routes: NavRoute[] = [
+    { href: "/", label: "home", icon: "⌂" },
+    { href: "/hardware", label: "hardware", icon: "⚙" },
+    { href: "/future-goals", label: "roadmap", icon: "◊" },
+    { href: "/interaction", label: "interaction", icon: "⎚" },
+  ]
+
+  const handleNavClick = () => {
+    playClickSound()
+  }
 
   return (
     <header
@@ -29,8 +37,9 @@ export function TerminalHeader() {
           {/* Logo/Brand */}
           <Link
             href="/"
-            className="terminal-text hover:text-accent text-lg transition-colors"
+            className="terminal-text hover:text-primary text-lg transition-colors"
             aria-label="Quil home"
+            onClick={handleNavClick}
           >
             &gt; quil
           </Link>
@@ -48,16 +57,20 @@ export function TerminalHeader() {
                 }`}
                 aria-current={pathname === route.href ? "page" : undefined}
                 role="menuitem"
+                onClick={handleNavClick}
               >
-                {route.icon} {route.label}
+                <span className="text-base">{route.icon}</span> {route.label}
               </Link>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="terminal-text hover:text-accent text-lg transition-colors md:hidden"
-            onClick={() => setMenuOpen(!menuOpen)}
+            className="terminal-text hover:text-primary text-lg transition-colors md:hidden"
+            onClick={() => {
+              playClickSound()
+              setMenuOpen(!menuOpen)
+            }}
             aria-label="Toggle navigation menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -68,11 +81,7 @@ export function TerminalHeader() {
 
         {/* Mobile Navigation */}
         {menuOpen && (
-          <div
-            id="mobile-menu"
-            className="border-border mt-3 flex flex-col gap-2 border-t pt-3 md:hidden"
-            role="menu"
-          >
+          <div id="mobile-menu" className="border-border mt-3 flex flex-col gap-2 border-t pt-3 md:hidden" role="menu">
             {routes.map((route) => (
               <Link
                 key={route.href}
@@ -82,15 +91,18 @@ export function TerminalHeader() {
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-primary hover:bg-card"
                 }`}
-                onClick={() => setMenuOpen(false)}
+                onClick={() => {
+                  playClickSound()
+                  setMenuOpen(false)
+                }}
                 role="menuitem"
               >
-                {route.icon} {route.label}
+                <span className="text-base">{route.icon}</span> {route.label}
               </Link>
             ))}
           </div>
         )}
       </nav>
     </header>
-  );
+  )
 }
