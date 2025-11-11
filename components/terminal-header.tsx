@@ -50,9 +50,9 @@ export function TerminalHeader() {
               <Link
                 key={route.href}
                 href={route.href}
-                className={`terminal-text flex items-center gap-1 rounded-sm px-3 py-2 text-sm transition-all ${
+                className={`terminal-text flex items-center gap-1 px-3 py-2 text-sm transition-all ${
                   pathname === route.href
-                    ? "bg-primary text-primary-foreground"
+                    ? "text-primary"
                     : "text-muted-foreground hover:text-primary hover:bg-card"
                 }`}
                 aria-current={pathname === route.href ? "page" : undefined}
@@ -86,9 +86,9 @@ export function TerminalHeader() {
               <Link
                 key={route.href}
                 href={route.href}
-                className={`terminal-text flex items-center gap-1 rounded-sm px-3 py-2 text-sm transition-all ${
+                className={`terminal-text flex items-center gap-1 px-3 py-2 text-sm transition-all ${
                   pathname === route.href
-                    ? "bg-primary text-primary-foreground"
+                    ? "text-primary"
                     : "text-muted-foreground hover:text-primary hover:bg-card"
                 }`}
                 onClick={() => {
