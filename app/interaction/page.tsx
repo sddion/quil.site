@@ -1,6 +1,12 @@
-import { TerminalHeader } from "@/components/terminal-header"
-import { InteractionCarousel } from "@/components/interaction-carousel"
-import { FingerTapIcon, HandsExpandIcon, HandsPinchIcon, HandLeftIcon, PointUpIcon } from "@/components/icon-library"
+import { TerminalHeader } from "@/components/terminal-header";
+import { InteractionCarousel } from "@/components/interaction-carousel";
+import {
+  FingerTapIcon,
+  HandsExpandIcon,
+  HandsPinchIcon,
+  HandLeftIcon,
+  PointUpIcon,
+} from "@/components/icon-library";
 
 export default function InteractionPage() {
   const gestures = [
@@ -34,7 +40,7 @@ export default function InteractionPage() {
       description: "Wake or sleep the device",
       icon: <PointUpIcon />,
     },
-  ]
+  ];
 
   const voiceCommands = [
     {
@@ -53,41 +59,55 @@ export default function InteractionPage() {
       command: "How are you?",
       response: "LLM generates contextual response",
     },
-  ]
+  ];
 
   const themePresets = [
     "Coming Soon",
     "Coming Soon",
     "Coming Soon",
     "Coming Soon",
-  ]
+  ];
 
   return (
     <main className="bg-background">
       <TerminalHeader />
 
-      <section className="max-w-7xl mx-auto px-4 py-12 overflow-x-hidden">
+      <section className="mx-auto max-w-7xl px-4 py-12">
         <div className="mb-8">
-          <h1 className="terminal-text text-3xl md:text-4xl mb-2 text-primary break-words">$ cat ./interaction/guide.md</h1>
-          <p className="text-muted-foreground font-mono">Touch Gestures & Voice Commands</p>
+          <h1 className="terminal-text text-primary mb-2 text-3xl md:text-4xl">
+            $ cat ./interaction/guide.md
+          </h1>
+          <p className="text-muted-foreground font-mono">
+            Touch Gestures & Voice Commands
+          </p>
         </div>
 
         {/* Gesture Guide */}
         <div className="mb-12">
-          <h2 className="terminal-text text-lg mb-4 text-accent">→ Touch Gestures</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 className="terminal-text text-accent mb-4 text-lg">
+            → Touch Gestures
+          </h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {gestures.map((gesture) => (
               <div key={gesture.gesture} className="card-file p-4">
-                <div className="text-2xl mb-3 text-primary">{gesture.icon}</div>
-                <h3 className="terminal-text text-sm text-primary">{gesture.gesture}</h3>
-                <p className="text-xs text-accent mt-1 font-mono">{gesture.action}</p>
-                <p className="text-xs text-muted-foreground mt-2">{gesture.description}</p>
+                <div className="text-primary mb-3 text-2xl">{gesture.icon}</div>
+                <h3 className="terminal-text text-primary text-sm">
+                  {gesture.gesture}
+                </h3>
+                <p className="text-accent mt-1 font-mono text-xs">
+                  {gesture.action}
+                </p>
+                <p className="text-muted-foreground mt-2 text-xs">
+                  {gesture.description}
+                </p>
               </div>
             ))}
             {/* "Coming Soon" Card for Touch Gestures */}
-            <div className="card-file p-4 flex flex-col justify-center items-center text-center">
-              <h3 className="terminal-text text-sm text-primary mb-2">More Gestures Coming Soon!</h3>
-              <p className="text-xs text-muted-foreground">
+            <div className="card-file flex flex-col items-center justify-center p-4 text-center">
+              <h3 className="terminal-text text-primary mb-2 text-sm">
+                More Gestures Coming Soon!
+              </h3>
+              <p className="text-muted-foreground text-xs">
                 Expanding touch controls and new ways to interact.
               </p>
             </div>
@@ -96,27 +116,45 @@ export default function InteractionPage() {
 
         {/* Voice Commands */}
         <div className="mb-12">
-          <h2 className="terminal-text text-lg mb-4 text-accent">→ Voice Commands (Examples)</h2>
-          <div className="card-file p-4 space-y-4">
+          <h2 className="terminal-text text-accent mb-4 text-lg">
+            → Voice Commands (Examples)
+          </h2>
+          <div className="card-file space-y-4 p-4">
             {voiceCommands.map((cmd, idx) => (
-              <div key={idx} className="pb-4 border-b border-border last:pb-0 last:border-0">
-                <p className="terminal-text text-sm text-primary">$ {cmd.command}</p>
-                <p className="text-xs text-muted-foreground mt-2">→ {cmd.response}</p>
+              <div
+                key={idx}
+                className="border-border border-b pb-4 last:border-0 last:pb-0"
+              >
+                <p className="terminal-text text-primary text-sm">
+                  $ {cmd.command}
+                </p>
+                <p className="text-muted-foreground mt-2 text-xs">
+                  → {cmd.response}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="overflow-x-hidden">
-          <h2 className="terminal-text text-lg mb-4 text-accent">→ Time & Date Display Themes</h2>
-          <InteractionCarousel items={themePresets.map((preset) => ({ label: "Theme", content: preset }))} />
+        <div className="mb-12">
+          <h2 className="terminal-text text-accent mb-4 text-lg">
+            → Time & Date Display Themes
+          </h2>
+          <InteractionCarousel
+            items={themePresets.map((preset) => ({
+              label: "Theme",
+              content: preset,
+            }))}
+          />
         </div>
 
         {/* Modes Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div className="card-file p-4">
-            <h3 className="terminal-text text-sm text-primary mb-3">Music Mode</h3>
-            <ul className="text-xs text-muted-foreground space-y-2">
+            <h3 className="terminal-text text-primary mb-3 text-sm">
+              Music Mode
+            </h3>
+            <ul className="text-muted-foreground space-y-2 text-xs">
               <li>• Displays track information</li>
               <li>• Gesture-based volume control</li>
               <li>• Swipe to skip songs</li>
@@ -124,8 +162,10 @@ export default function InteractionPage() {
             </ul>
           </div>
           <div className="card-file p-4">
-            <h3 className="terminal-text text-sm text-primary mb-3">Chat Mode</h3>
-            <ul className="text-xs text-muted-foreground space-y-2">
+            <h3 className="terminal-text text-primary mb-3 text-sm">
+              Chat Mode
+            </h3>
+            <ul className="text-muted-foreground space-y-2 text-xs">
               <li>• Voice input via microphone</li>
               <li>• LLM-powered responses</li>
               <li>• Emotion display feedback</li>
@@ -135,11 +175,11 @@ export default function InteractionPage() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-background/50 mt-12 py-8 crt-scan">
-        <div className="max-w-7xl mx-auto px-4 text-center text-xs text-muted-foreground">
+      <footer className="border-border bg-background/50 crt-scan mt-12 border-t py-8">
+        <div className="text-muted-foreground mx-auto max-w-7xl px-4 text-center text-xs">
           <p>$ quil --interactions --guide</p>
         </div>
       </footer>
     </main>
-  )
+  );
 }

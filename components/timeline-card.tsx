@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Dialog,
@@ -7,23 +7,24 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { ChevronLeft, ChevronRight } from "lucide-react" 
-import { useClickSound } from "@/hooks/use-click-sound" 
+} from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useClickSound } from "@/hooks/use-click-sound";
 
 interface TimelineCardProps {
   milestone: {
-    id: string
-    phase: string
-    title: string
-    description: string
-    color: string
-    icon: string
-  }
-  index: number
-  activeMilestoneIndex: number | null
-  setActiveMilestoneIndex: (index: number | null) => void
-  totalMilestones: number
+    id: string;
+    phase: string;
+    title: string;
+    description: string;
+    color: string;
+    icon: string;
+  };
+  isLeft: boolean;
+  index: number;
+  activeMilestoneIndex: number | null;
+  setActiveMilestoneIndex: (index: number | null) => void;
+  totalMilestones: number;
 }
 
 export function TimelineCard({
@@ -33,46 +34,44 @@ export function TimelineCard({
   setActiveMilestoneIndex,
   totalMilestones,
 }: TimelineCardProps) {
-  const isDialogOpen = activeMilestoneIndex === index
-  const { playClickSound } = useClickSound()
-
+  const isDialogOpen = activeMilestoneIndex === index;
+  const { playClickSound } = useClickSound();
 
   const handleOpenChange = (open: boolean) => {
     if (open) {
-      setActiveMilestoneIndex(index)
+      setActiveMilestoneIndex(index);
     } else {
-      setActiveMilestoneIndex(null)
+      setActiveMilestoneIndex(null);
     }
-  }
+  };
 
   const handlePrevious = () => {
     if (activeMilestoneIndex !== null && activeMilestoneIndex > 0) {
-      setActiveMilestoneIndex(activeMilestoneIndex - 1)
+      setActiveMilestoneIndex(activeMilestoneIndex - 1);
     }
-  }
+  };
 
   const handleNext = () => {
-    if (activeMilestoneIndex !== null && activeMilestoneIndex < totalMilestones - 1) {
-      setActiveMilestoneIndex(activeMilestoneIndex + 1)
+    if (
+      activeMilestoneIndex !== null &&
+      activeMilestoneIndex < totalMilestones - 1
+    ) {
+      setActiveMilestoneIndex(activeMilestoneIndex + 1);
     }
-  }
+  };
 
   return (
-    <div
-      className="relative w-full md:w-[45%] px-4"
-    >
+    <div className="relative w-full md:w-[45%]">
       <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
           <div
-            className="relative p-6 rounded-lg overflow-hidden group transition-shadow duration-300"
-            onClick={playClickSound} 
-            style={{
-
-            }}
+            className="group relative overflow-hidden rounded-lg p-6 transition-shadow duration-300"
+            onClick={playClickSound}
+            style={{}}
           >
-            <div className="inline-block mb-3">
+            <div className="mb-3 inline-block">
               <span
-                className="text-xs font-mono font-bold px-3 py-1 rounded border"
+                className="rounded border px-3 py-1 font-mono text-xs font-bold"
                 style={{
                   borderColor: milestone.color,
                   color: milestone.color,
@@ -83,10 +82,7 @@ export function TimelineCard({
               </span>
             </div>
 
-
-
-
-            <h3 className="text-lg font-bold text-primary cursor-pointer select-none">
+            <h3 className="text-primary cursor-pointer text-lg font-bold select-none">
               {milestone.title}
             </h3>
           </div>
@@ -94,22 +90,26 @@ export function TimelineCard({
         <DialogContent>
           <DialogHeader>
             <DialogTitle>{milestone.title}</DialogTitle>
-            <DialogDescription>
-              {milestone.description}
-            </DialogDescription>
+            <DialogDescription>{milestone.description}</DialogDescription>
           </DialogHeader>
-          <div className="flex justify-between mt-4">
+          <div className="mt-4 flex justify-between">
             <button
-              onClick={() => { handlePrevious(); playClickSound(); }}
+              onClick={() => {
+                handlePrevious();
+                playClickSound();
+              }}
               disabled={activeMilestoneIndex === 0}
-              className="p-2 rounded-full bg-gray-800 text-white disabled:opacity-50"
+              className="rounded-full bg-gray-800 p-2 text-white disabled:opacity-50"
             >
               <ChevronLeft size={20} />
             </button>
             <button
-              onClick={() => { handleNext(); playClickSound(); }}
+              onClick={() => {
+                handleNext();
+                playClickSound();
+              }}
               disabled={activeMilestoneIndex === totalMilestones - 1}
-              className="p-2 rounded-full bg-gray-800 text-white disabled:opacity-50"
+              className="rounded-full bg-gray-800 p-2 text-white disabled:opacity-50"
             >
               <ChevronRight size={20} />
             </button>
@@ -117,5 +117,5 @@ export function TimelineCard({
         </DialogContent>
       </Dialog>
     </div>
-  )
+  );
 }
