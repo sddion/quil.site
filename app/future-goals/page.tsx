@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { TerminalHeader } from "@/components/terminal-header"
-import { PageTransition } from "@/components/page-transition"
-import { Roadmap } from "@/components/roadmap-3d"
+import { useState } from "react";
+import { TerminalHeader } from "@/components/terminal-header";
+import { PageTransition } from "@/components/page-transition";
+import { Roadmap } from "@/components/roadmap-3d";
 
 interface RoadmapMilestone {
-  id: string
-  phase: string
-  title: string
-  description: string
-  color: string
-  icon: string
+  id: string;
+  phase: string;
+  title: string;
+  description: string;
+  color: string;
+  icon: string;
 }
 
 export default function FutureGoalsPage() {
@@ -25,7 +25,7 @@ export default function FutureGoalsPage() {
       color: "rgb(112, 200, 180)",
       icon: "◆",
     },
-      {
+    {
       id: "v2-camera",
       phase: "Phase 1",
       title: "Vision AI ",
@@ -37,13 +37,13 @@ export default function FutureGoalsPage() {
     {
       id: "future-ota",
       phase: "Phase 2",
-      title: "Future: OTA Updates & Cloud Learning",
+      title: "OTA Updates & Cloud Learning",
       description:
         "Modular firmware upgrades deployed over-the-air without manual reflashing. Optional cloud-side learning improves model accuracy while users maintain control over data sharing preferences.",
       color: "rgb(200, 180, 100)",
       icon: "◎",
     },
-        {
+    {
       id: "v3-pentesting",
       phase: "Phase 3",
       title: "PenTesting Edition",
@@ -52,23 +52,26 @@ export default function FutureGoalsPage() {
       color: "rgb(255, 150, 100)",
       icon: "◇",
     },
-  ]
+  ];
 
-  const [activeMilestoneIndex, setActiveMilestoneIndex] = useState<number | null>(null); // Re-introduce state
+  const [activeMilestoneIndex, setActiveMilestoneIndex] = useState<
+    number | null
+  >(null); // Re-introduce state
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-background">
+      <div className="bg-background min-h-screen">
         <TerminalHeader />
 
-        <section className="max-w-6xl mx-auto px-4 py-16 md:py-20" role="main">
+        <section className="mx-auto max-w-6xl px-4 py-16 md:py-20" role="main">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl mb-4 text-primary font-mono font-bold">
-              $ cat ./development-roadmap.md
+            <h1 className="text-primary mb-4 font-mono text-4xl font-bold md:text-5xl">
+              $ cat ./roadmap.md
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              Quil development phases from prototype through commercial deployment. Each milestone represents a major
-              evolution in capabilities and features. Scroll to explore the journey.
+            <p className="text-muted-foreground max-w-2xl text-lg">
+              Quil development phases from prototype through commercial
+              deployment. Each milestone represents a major evolution in
+              capabilities and features. Scroll to explore the journey.
             </p>
           </div>
 
@@ -80,12 +83,14 @@ export default function FutureGoalsPage() {
 
           {/* Info Sections */}
           <div className="mt-16 space-y-6">
-
-            <div className="p-8 bg-card border border-border rounded-lg">
-              <h2 className="text-2xl font-mono font-bold mb-4 text-primary">Privacy & Data</h2>
+            <div className="bg-card border-border rounded-lg border p-8">
+              <h2 className="text-primary mb-4 font-mono text-2xl font-bold">
+                Privacy & Data
+              </h2>
               <p className="text-muted-foreground leading-relaxed">
-                All processing happens on-device by default. Optional cloud features require explicit user consent. No
-                telemetry or tracking without permission. Your data, your rules.
+                All processing happens on-device by default. Optional cloud
+                features require explicit user consent. No telemetry or tracking
+                without permission. Your data, your rules.
               </p>
             </div>
           </div>
@@ -95,5 +100,5 @@ export default function FutureGoalsPage() {
         <div className="crt-scan pointer-events-none fixed inset-0" />
       </div>
     </PageTransition>
-  )
+  );
 }
