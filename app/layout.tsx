@@ -35,6 +35,28 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  openGraph: {
+    title: "Quil - Voice Assistant Device",
+    description:
+      "Quil: An AI-powered voice assistant with hardware integration. Open-source hardware and software for natural voice interaction.",
+    url: "https://meetquil.vercel.app",
+    siteName: "Quil",
+    images: [
+      {
+        url: "/android-chrome-512x512.png",
+        width: 512,
+        height: 512,
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Quil - Voice Assistant Device",
+    description:
+      "Quil: An AI-powered voice assistant with hardware integration. Open-source hardware and software for natural voice interaction.",
+    images: ["/android-chrome-512x512.png"],
+  },
 }
 
 export default function RootLayout({
