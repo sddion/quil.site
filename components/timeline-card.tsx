@@ -61,7 +61,7 @@ export function TimelineCard({
 
   return (
     <div
-      className="relative w-full md:w-[45%]"
+      className="relative w-full md:w-[45%] ml-12 md:ml-0"
     >
       <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>

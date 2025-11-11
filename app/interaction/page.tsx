@@ -107,7 +107,7 @@ export default function InteractionPage() {
           </div>
         </div>
 
-        <div className="mb-12">
+        <div className="overflow-x-hidden">
           <h2 className="terminal-text text-lg mb-4 text-accent">→ Time & Date Display Themes</h2>
           <InteractionCarousel items={themePresets.map((preset) => ({ label: "Theme", content: preset }))} />
         </div>
