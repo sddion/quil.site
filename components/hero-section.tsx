@@ -32,19 +32,6 @@ export function HeroSection() {
             <span className="blinking-light"></span>
             <span>Status: In Development</span>
           </div>
-          <div className="mt-4">
-            <a
-              href="https://www.buymeacoffee.com/sddion"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src="https://cdn.buymeacoffee.com/buttons/v2/default-violet.png"
-                alt="Buy Me A Coffee"
-                style={{ height: "60px", width: "217px" }}
-              />
-            </a>
-          </div>
         </div>
       </div>
     </section>
