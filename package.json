@@ -7,7 +7,6 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
