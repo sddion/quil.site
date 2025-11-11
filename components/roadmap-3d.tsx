@@ -25,7 +25,7 @@ interface RoadmapProps {
 
 export function Roadmap({ milestones, activeMilestoneIndex, setActiveMilestoneIndex }: RoadmapProps) {
   return (
-    <div className="relative w-full py-16 md:py-32">
+    <div className="relative w-full py-16 md:py-32 overflow-hidden">
       {/* Main Timeline Container */}
       <div className="relative max-w-6xl mx-auto px-4">
         {/* Vertical Center Line for desktop, left-aligned for mobile */}

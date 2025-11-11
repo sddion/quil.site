@@ -66,9 +66,9 @@ export default function InteractionPage() {
     <main className="bg-background">
       <TerminalHeader />
 
-      <section className="max-w-7xl mx-auto px-4 py-12">
+      <section className="max-w-7xl mx-auto px-4 py-12 overflow-x-hidden">
         <div className="mb-8">
-          <h1 className="terminal-text text-3xl md:text-4xl mb-2 text-primary">$ cat ./interaction/guide.md</h1>
+          <h1 className="terminal-text text-3xl md:text-4xl mb-2 text-primary break-words">$ cat ./interaction/guide.md</h1>
           <p className="text-muted-foreground font-mono">Touch Gestures & Voice Commands</p>
         </div>
 

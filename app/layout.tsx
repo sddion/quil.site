@@ -4,6 +4,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 import { Footer } from "@/components/footer"
+import Script from "next/script"
 
 import { Geist_Mono, Geist_Mono as V0_Font_Geist_Mono } from 'next/font/google'
 
@@ -77,6 +78,18 @@ export default function RootLayout({
           {children}
         </main>
         <Footer /> {/* Render Footer here */}
+        <Script
+          data-name="BMC-Widget"
+          data-cfasync="false"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+          data-id="sddion"
+          data-description="Support me on Buy me a coffee!"
+          data-message=" Keep Quil alive — buy the damn coffee."
+          data-color="#40DCA5"
+          data-position="Right"
+          data-x_margin="18"
+          data-y_margin="18"
+        />
       </body>
     </html>
   )

@@ -20,7 +20,6 @@ interface TimelineCardProps {
     color: string
     icon: string
   }
-  isLeft: boolean
   index: number
   activeMilestoneIndex: number | null
   setActiveMilestoneIndex: (index: number | null) => void
@@ -29,7 +28,6 @@ interface TimelineCardProps {
 
 export function TimelineCard({
   milestone,
-  isLeft,
   index,
   activeMilestoneIndex,
   setActiveMilestoneIndex,
@@ -61,7 +59,7 @@ export function TimelineCard({
 
   return (
     <div
-      className="relative w-full md:w-[45%] ml-12 md:ml-0"
+      className="relative w-full md:w-[45%] px-4"
     >
       <Dialog open={isDialogOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
