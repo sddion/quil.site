@@ -3,6 +3,12 @@
 import { TerminalHeader } from "@/components/terminal-header"
 import { InteractionCarousel } from "@/components/interaction-carousel"
 import { FingerTapIcon, HandsExpandIcon, HandsPinchIcon, HandLeftIcon, PointUpIcon } from "@/components/icon-library"
+import Image from "next/image"
+
+import oledThemeBold from "@/public/oled_theme_bold.png"
+import oledThemeMinimal from "@/public/oled_theme_minimal.png"
+import oledThemePlayback from "@/public/oled_theme_playback.png"
+import oledThemeRetro from "@/public/oled_theme_retro.png"
 
 
 export default function InteractionPage() {
@@ -58,7 +64,28 @@ export default function InteractionPage() {
     },
   ]
 
-  const themePresets = ["Coming Soon", "Coming Soon", "Coming Soon", "Coming Soon"]
+  const themePresets = [
+    {
+      image: oledThemeBold,
+      title: "Bold",
+      description: "A clean, bold theme for easy readability.",
+    },
+    {
+      image: oledThemeMinimal,
+      title: "Minimal",
+      description: "A simple and elegant theme for a focused experience.",
+    },
+    {
+      image: oledThemePlayback,
+      title: "Playback",
+      description: "A theme designed for media control and playback.",
+    },
+    {
+      image: oledThemeRetro,
+      title: "Retro",
+      description: "A nostalgic theme with a classic feel.",
+    },
+  ]
 
   return (
     <main className="bg-background min-h-screen overflow-x-hidden relative">
@@ -114,8 +141,19 @@ export default function InteractionPage() {
           <div className="overflow-x-auto">
             <InteractionCarousel
               items={themePresets.map((preset) => ({
-                label: "Theme",
-                content: preset,
+                label: preset.title,
+                content: (
+                  <div className="text-center">
+                    <Image
+                      src={preset.image}
+                      alt={`${preset.title} theme`}
+                      width={256}
+                      height={256}
+                      className="mx-auto mb-4 rounded-lg"
+                    />
+                    <p className="text-muted-foreground text-xs md:text-sm">{preset.description}</p>
+                  </div>
+                ),
               }))}
             />
           </div>
